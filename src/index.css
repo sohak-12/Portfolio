@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #000; overflow: hidden; font-family: 'Courier New', monospace; }
+  ::-webkit-scrollbar { display: none; }
+}
+
+@layer utilities {
+  .neon-text {
+    color: #bc13fe;
+    text-shadow: 0 0 7px #bc13fe, 0 0 21px #bc13fe, 0 0 42px #bc13fe;
+  }
+  .neon-cyan {
+    color: #00fff9;
+    text-shadow: 0 0 7px #00fff9, 0 0 21px #00fff9, 0 0 42px #00fff9;
+  }
+  .glass {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(188, 19, 254, 0.35);
+  }
+  .glass-cyan {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 249, 0.35);
+  }
+  .glow-border {
+    box-shadow: 0 0 8px #bc13fe, 0 0 20px rgba(188,19,254,0.4), inset 0 0 8px rgba(188,19,254,0.1);
+  }
+  .glow-border-cyan {
+    box-shadow: 0 0 8px #00fff9, 0 0 20px rgba(0,255,249,0.4), inset 0 0 8px rgba(0,255,249,0.1);
+  }
+}
+
+@keyframes glitch {
+  0%   { clip-path: inset(0 0 95% 0); transform: translate(-4px, 0); }
+  10%  { clip-path: inset(30% 0 50% 0); transform: translate(4px, 0); }
+  20%  { clip-path: inset(60% 0 20% 0); transform: translate(-2px, 0); }
+  30%  { clip-path: inset(80% 0 5% 0);  transform: translate(2px, 0); }
+  40%  { clip-path: inset(10% 0 80% 0); transform: translate(-4px, 0); }
+  50%  { clip-path: inset(50% 0 30% 0); transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0 0);     transform: translate(0, 0); }
+}
+
+@keyframes scanline {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.2; }
+}
+
+.glitch-in  { animation: glitch 0.8s steps(1) forwards; }
+.scanline   { animation: scanline 3s linear infinite; }
+.pulse-neon { animation: pulse-neon 2s ease-in-out infinite; }
+.flicker    { animation: flicker 4s infinite; }
